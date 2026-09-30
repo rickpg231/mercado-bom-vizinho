@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentações - Mercado Bom Vizinho</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #176f3a;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        header h1 {
+            margin: 0 0 5px 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        nav {
+            background: white;
+            padding: 16px 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav a {
+            color: #176f3a;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 35px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 32px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #176f3a;
+            margin-top: 0;
+        }
+
+        .formulario {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        select, input, button {
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #bbb;
+        }
+
+        button {
+            background: #176f3a;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #176f3a;
+            color: white;
+            text-align: left;
+            padding: 14px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .entrada {
+            color: #176f3a;
+            font-weight: bold;
+        }
+
+        .saida {
+            color: #a52a2a;
+            font-weight: bold;
+        }
+
+        .resumo {
+            display: flex;
+            gap: 20px;
+        }
+
+        .indicador {
+            flex: 1;
+            background: #eef7f1;
+            padding: 20px;
+            border-left: 5px solid #176f3a;
+        }
+
+        .indicador strong {
+            display: block;
+            font-size: 26px;
+            margin-top: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Mercado Bom Vizinho</h1>
+    <p>Sistema de gerenciamento de produtos e estoque</p>
+</header>
+
+<nav>
+    <a href="/">Início</a>
+    <a href="/">Cadastrar Produto</a>
+    <a href="/movimentacoes">Movimentações de Estoque</a>
+</nav>
+
+<main>
+
+    <section class="card">
+        <h2>Movimentação de Estoque</h2>
+
+        <div class="formulario">
+            <select aria-label="Selecionar produto">
+                <option>Arroz 5kg</option>
+                <option>Feijão 1kg</option>
+                <option>Óleo 900ml</option>
+            </select>
+
+            <select aria-label="Tipo de movimentação">
+                <option>Entrada</option>
+                <option>Saída</option>
+            </select>
+
+            <input
+                type="number"
+                placeholder="Quantidade"
+                aria-label="Quantidade da movimentação"
+            >
+
+            <button type="button">Registrar</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Resumo do Estoque</h2>
+
+        <div class="resumo">
+            <div class="indicador">
+                Produtos cadastrados
+                <strong>3</strong>
+            </div>
+
+            <div class="indicador">
+                Total de itens
+                <strong>42</strong>
+            </div>
+
+            <div class="indicador">
+                Movimentações registradas
+                <strong>5</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Histórico de Movimentações</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Tipo</th>
+                    <th>Quantidade</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Arroz 5kg</td>
+                    <td class="entrada">Entrada</td>
+                    <td>10</td>
+                    <td>30/09/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Feijão 1kg</td>
+                    <td class="entrada">Entrada</td>
+                    <td>15</td>
+                    <td>30/09/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Feijão 1kg</td>
+                    <td class="saida">Saída</td>
+                    <td>1</td>
+                    <td>30/09/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Óleo 900ml</td>
+                    <td class="entrada">Entrada</td>
+                    <td>20</td>
+                    <td>30/09/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Óleo 900ml</td>
+                    <td class="saida">Saída</td>
+                    <td>2</td>
+                    <td>30/09/2026</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    Mercado Bom Vizinho — MVP Comunitário
+</footer>
+
+</body>
+</html>
