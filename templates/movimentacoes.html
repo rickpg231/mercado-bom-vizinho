@@ -2,10 +2,14 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Movimentações - Mercado Bom Vizinho</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -35,20 +39,35 @@
 
         nav {
             background: white;
-            padding: 16px 40px;
+            padding: 14px 40px;
             border-bottom: 1px solid #ddd;
+
+            display: flex;
+            align-items: center;
+            gap: 35px;
         }
 
         nav a {
             color: #176f3a;
             text-decoration: none;
             font-weight: bold;
-            margin-right: 35px;
+        }
+
+        #contraste {
+            margin-left: auto;
+            background: #176f3a;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         main {
             max-width: 1100px;
             margin: 32px auto;
+            padding: 0 15px;
         }
 
         .card {
@@ -70,7 +89,9 @@
             gap: 12px;
         }
 
-        select, input, button {
+        select,
+        input,
+        button {
             padding: 14px;
             font-size: 16px;
             border-radius: 5px;
@@ -83,6 +104,14 @@
             border: none;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        button:focus,
+        a:focus,
+        input:focus,
+        select:focus {
+            outline: 3px solid #ffbf00;
+            outline-offset: 3px;
         }
 
         table {
@@ -135,8 +164,117 @@
             padding: 25px;
             color: #555;
         }
+
+
+        /* ========================================
+           MODO DE ALTO CONTRASTE
+           Recurso de acessibilidade
+        ======================================== */
+
+        body.alto-contraste {
+            background: #000;
+            color: #fff;
+        }
+
+        body.alto-contraste header {
+            background: #000;
+            color: #fff;
+            border-bottom: 2px solid #ffff00;
+        }
+
+        body.alto-contraste nav {
+            background: #000;
+            border-bottom: 2px solid #ffff00;
+        }
+
+        body.alto-contraste nav a {
+            color: #ffff00;
+        }
+
+        body.alto-contraste .card {
+            background: #000;
+            color: #fff;
+            border: 2px solid #ffff00;
+            box-shadow: none;
+        }
+
+        body.alto-contraste h1,
+        body.alto-contraste h2 {
+            color: #ffff00;
+        }
+
+        body.alto-contraste .indicador {
+            background: #111;
+            color: #fff;
+            border: 2px solid #ffff00;
+        }
+
+        body.alto-contraste th {
+            background: #ffff00;
+            color: #000;
+            border: 1px solid #fff;
+        }
+
+        body.alto-contraste td {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        body.alto-contraste .entrada {
+            color: #00ff66;
+        }
+
+        body.alto-contraste .saida {
+            color: #ff8080;
+        }
+
+        body.alto-contraste select,
+        body.alto-contraste input {
+            background: #000;
+            color: #fff;
+            border: 2px solid #ffff00;
+        }
+
+        body.alto-contraste input::placeholder {
+            color: #fff;
+        }
+
+        body.alto-contraste button {
+            background: #ffff00;
+            color: #000;
+            border: 2px solid #fff;
+        }
+
+        body.alto-contraste footer {
+            color: #ffff00;
+        }
+
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 800px) {
+
+            .formulario {
+                grid-template-columns: 1fr;
+            }
+
+            .resumo {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            #contraste {
+                margin-left: 0;
+            }
+        }
+
     </style>
 </head>
+
 
 <body>
 
@@ -145,117 +283,298 @@
     <p>Sistema de gerenciamento de produtos e estoque</p>
 </header>
 
-<nav>
+
+<nav aria-label="Navegação principal">
+
     <a href="/">Início</a>
+
     <a href="/">Cadastrar Produto</a>
-    <a href="/movimentacoes">Movimentações de Estoque</a>
+
+    <a href="/movimentacoes">
+        Movimentações de Estoque
+    </a>
+
+    <button
+        type="button"
+        id="contraste"
+        onclick="alternarContraste()"
+        aria-pressed="false"
+        aria-label="Ativar modo de alto contraste">
+
+        Alto contraste
+
+    </button>
+
 </nav>
+
 
 <main>
 
-    <section class="card">
-        <h2>Movimentação de Estoque</h2>
+    <!-- MOVIMENTAÇÃO -->
+
+    <section class="card"
+             aria-labelledby="titulo-movimentacao">
+
+        <h2 id="titulo-movimentacao">
+            Movimentação de Estoque
+        </h2>
 
         <div class="formulario">
+
             <select aria-label="Selecionar produto">
+
                 <option>Arroz 5kg</option>
+
                 <option>Feijão 1kg</option>
+
                 <option>Óleo 900ml</option>
+
             </select>
 
+
             <select aria-label="Tipo de movimentação">
+
                 <option>Entrada</option>
+
                 <option>Saída</option>
+
             </select>
+
 
             <input
                 type="number"
+                min="1"
                 placeholder="Quantidade"
-                aria-label="Quantidade da movimentação"
-            >
+                aria-label="Quantidade da movimentação">
 
-            <button type="button">Registrar</button>
+
+            <button
+                type="button"
+                aria-label="Registrar movimentação">
+
+                Registrar
+
+            </button>
+
         </div>
+
     </section>
 
-    <section class="card">
-        <h2>Resumo do Estoque</h2>
+
+    <!-- RESUMO -->
+
+    <section class="card"
+             aria-labelledby="titulo-resumo">
+
+        <h2 id="titulo-resumo">
+            Resumo do Estoque
+        </h2>
 
         <div class="resumo">
+
             <div class="indicador">
+
                 Produtos cadastrados
+
                 <strong>3</strong>
+
             </div>
 
+
             <div class="indicador">
+
                 Total de itens
+
                 <strong>42</strong>
+
             </div>
 
+
             <div class="indicador">
+
                 Movimentações registradas
+
                 <strong>5</strong>
+
             </div>
+
         </div>
+
     </section>
 
-    <section class="card">
-        <h2>Histórico de Movimentações</h2>
+
+    <!-- HISTÓRICO -->
+
+    <section class="card"
+             aria-labelledby="titulo-historico">
+
+        <h2 id="titulo-historico">
+            Histórico de Movimentações
+        </h2>
+
 
         <table>
+
             <thead>
+
                 <tr>
-                    <th>Produto</th>
-                    <th>Tipo</th>
-                    <th>Quantidade</th>
-                    <th>Data</th>
+
+                    <th scope="col">
+                        Produto
+                    </th>
+
+                    <th scope="col">
+                        Tipo
+                    </th>
+
+                    <th scope="col">
+                        Quantidade
+                    </th>
+
+                    <th scope="col">
+                        Data
+                    </th>
+
                 </tr>
+
             </thead>
 
+
             <tbody>
+
                 <tr>
+
                     <td>Arroz 5kg</td>
-                    <td class="entrada">Entrada</td>
+
+                    <td class="entrada">
+                        Entrada
+                    </td>
+
                     <td>10</td>
+
                     <td>30/09/2026</td>
+
                 </tr>
 
+
                 <tr>
+
                     <td>Feijão 1kg</td>
-                    <td class="entrada">Entrada</td>
+
+                    <td class="entrada">
+                        Entrada
+                    </td>
+
                     <td>15</td>
+
                     <td>30/09/2026</td>
+
                 </tr>
 
+
                 <tr>
+
                     <td>Feijão 1kg</td>
-                    <td class="saida">Saída</td>
+
+                    <td class="saida">
+                        Saída
+                    </td>
+
                     <td>1</td>
+
                     <td>30/09/2026</td>
+
                 </tr>
 
+
                 <tr>
+
                     <td>Óleo 900ml</td>
-                    <td class="entrada">Entrada</td>
+
+                    <td class="entrada">
+                        Entrada
+                    </td>
+
                     <td>20</td>
+
                     <td>30/09/2026</td>
+
                 </tr>
 
+
                 <tr>
+
                     <td>Óleo 900ml</td>
-                    <td class="saida">Saída</td>
+
+                    <td class="saida">
+                        Saída
+                    </td>
+
                     <td>2</td>
+
                     <td>30/09/2026</td>
+
                 </tr>
+
             </tbody>
+
         </table>
+
     </section>
 
 </main>
 
+
 <footer>
     Mercado Bom Vizinho — MVP Comunitário
 </footer>
+
+
+<script>
+
+    function alternarContraste() {
+
+        const body =
+            document.body;
+
+        const botao =
+            document.getElementById("contraste");
+
+
+        body.classList.toggle(
+            "alto-contraste"
+        );
+
+
+        const ativo =
+            body.classList.contains(
+                "alto-contraste"
+            );
+
+
+        botao.setAttribute(
+            "aria-pressed",
+            ativo
+        );
+
+
+        botao.setAttribute(
+            "aria-label",
+            ativo
+                ? "Desativar modo de alto contraste"
+                : "Ativar modo de alto contraste"
+        );
+
+
+        botao.textContent =
+            ativo
+                ? "Contraste normal"
+                : "Alto contraste";
+
+    }
+
+</script>
+
 
 </body>
 </html>
