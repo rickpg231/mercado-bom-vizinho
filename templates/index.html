@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Bom Vizinho</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #176b3a;
+            color: white;
+            padding: 20px 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 14px 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav a {
+            margin-right: 25px;
+            color: #176b3a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #176b3a;
+        }
+
+        .resumo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .indicador {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: #eef7f1;
+            border-left: 5px solid #176b3a;
+        }
+
+        .indicador strong {
+            display: block;
+            font-size: 26px;
+            margin-top: 8px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+        }
+
+        label {
+            position: absolute;
+            left: -10000px;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #176b3a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover,
+        button:focus {
+            background: #0f4f2b;
+            outline: 3px solid #222;
+            outline-offset: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #176b3a;
+            color: white;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #176b3a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #555;
+        }
+
+        @media (max-width: 750px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Mercado Bom Vizinho</h1>
+    <p>Sistema de gerenciamento de produtos e estoque</p>
+</header>
+
+<nav aria-label="Navegação principal">
+    <a href="#inicio">Início</a>
+    <a href="#cadastro">Cadastrar Produto</a>
+    <a href="#estoque">Estoque</a>
+</nav>
+
+<main id="inicio">
+
+    <section class="card">
+        <h2>Painel de Controle</h2>
+
+        <div class="resumo">
+            <div class="indicador">
+                Produtos cadastrados
+                <strong>3</strong>
+            </div>
+
+            <div class="indicador">
+                Itens em estoque
+                <strong>42</strong>
+            </div>
+
+            <div class="indicador">
+                Situação
+                <strong class="status">Operacional</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="card" id="cadastro">
+        <h2>Cadastrar Produto</h2>
+
+        <form>
+            <label for="nome">Nome do produto</label>
+            <input id="nome" type="text"
+                   placeholder="Nome do produto"
+                   aria-label="Nome do produto">
+
+            <label for="quantidade">Quantidade</label>
+            <input id="quantidade" type="number"
+                   min="0"
+                   placeholder="Quantidade"
+                   aria-label="Quantidade">
+
+            <label for="preco">Preço</label>
+            <input id="preco" type="number"
+                   min="0"
+                   step="0.01"
+                   placeholder="Preço"
+                   aria-label="Preço">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+
+    <section class="card" id="estoque">
+        <h2>Produtos em Estoque</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Arroz 5kg</td>
+                    <td>10</td>
+                    <td>R$ 25,90</td>
+                    <td class="status">Disponível</td>
+                </tr>
+
+                <tr>
+                    <td>Feijão 1kg</td>
+                    <td>14</td>
+                    <td>R$ 8,50</td>
+                    <td class="status">Disponível</td>
+                </tr>
+
+                <tr>
+                    <td>Óleo 900ml</td>
+                    <td>18</td>
+                    <td>R$ 7,90</td>
+                    <td class="status">Disponível</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    Mercado Bom Vizinho — MVP Comunitário
+</footer>
+
+</body>
+</html>
